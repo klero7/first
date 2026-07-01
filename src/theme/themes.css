@@ -1,0 +1,80 @@
+:root {
+  color-scheme: dark light;
+  --bg-gradient: radial-gradient(ellipse at top, #2b2f6b 0%, #14163a 60%, #05061a 100%);
+  --accent: #ffd166;
+  --accent-2: #ff70a6;
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-solid: #171c42;
+  --text: #f4f6ff;
+  --text-dim: #b7bfe6;
+  --success: #4ade80;
+  --error: #ff6b6b;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+}
+
+button {
+  font-family: inherit;
+}
+
+[data-theme='space'] {
+  --bg-gradient: radial-gradient(ellipse at top, #1b2a63 0%, #0b1130 60%, #05061a 100%);
+  --accent: #ffd166;
+  --accent-2: #ff70a6;
+  --surface: rgba(255, 255, 255, 0.08);
+  --surface-solid: #171c42;
+  --text: #f4f6ff;
+  --text-dim: #b7bfe6;
+  --success: #4ade80;
+  --error: #ff6b6b;
+}
+
+[data-theme='cosmetics'] {
+  --bg-gradient: radial-gradient(ellipse at top, #ffe1ec 0%, #ffd4e5 55%, #ffc2dd 100%);
+  --accent: #ff6fa5;
+  --accent-2: #a78bfa;
+  --surface: rgba(255, 255, 255, 0.65);
+  --surface-solid: #ffffff;
+  --text: #4a2140;
+  --text-dim: #8a5f7d;
+  --success: #34d399;
+  --error: #f87171;
+}
+
+.app-shell {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg-gradient);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.big-tap {
+  min-width: 88px;
+  min-height: 88px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  font-weight: 800;
+  font-size: 1.4rem;
+  touch-action: manipulation;
+  user-select: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.big-tap:active {
+  transform: scale(0.94);
+}
