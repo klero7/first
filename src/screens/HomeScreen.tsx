@@ -10,6 +10,10 @@ const CATEGORY_LABELS: Record<string, string> = {
   reading: 'Чтение',
   numbers: 'Цифры',
   matching: 'Найди пару',
+  facts: 'Хочу всё знать',
+  shapes: 'Формы',
+  colors: 'Цвета',
+  seasons: 'Времена года',
 };
 
 export function HomeScreen({
@@ -36,9 +40,11 @@ export function HomeScreen({
     <div className="app-shell" style={{ overflowY: 'auto', padding: '1rem 1.5rem 2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <span style={{ fontSize: '2.5rem' }}>{profile.avatarEmoji}</span>
+          <span className="float-avatar" style={{ fontSize: '2.5rem' }}>
+            {profile.avatarEmoji}
+          </span>
           <div>
-            <div style={{ fontSize: '1.4rem', fontWeight: 800 }}>{profile.name}</div>
+            <div style={{ fontSize: '1.4rem', fontWeight: 700, fontFamily: 'var(--font-heading)' }}>{profile.name}</div>
             <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>
               ⭐ {progress.stars} · 🔥 {progress.streakDays} дн.
             </div>
@@ -77,17 +83,17 @@ export function HomeScreen({
         </div>
       </div>
 
-      {Object.entries(grouped).map(([category, categorySets]) => (
+      {Object.entries(grouped).map(([category, categorySets], sectionIdx) => (
         <section key={category} style={{ marginTop: '1.5rem' }}>
           <h2 style={{ fontSize: '1.2rem', margin: '0 0 0.75rem' }}>{CATEGORY_LABELS[category] ?? category}</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-            {categorySets.map((set) => {
+            {categorySets.map((set, i) => {
               const done = progress.completedSets[set.id];
               return (
                 <button
                   key={set.id}
                   onClick={() => onPickSet(set)}
-                  className="big-tap"
+                  className="big-tap bounce-in"
                   style={{
                     width: '10rem',
                     height: '8rem',
@@ -96,9 +102,9 @@ export function HomeScreen({
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '0.4rem',
-                    background: 'var(--surface-solid)',
-                    color: 'var(--text)',
                     border: '2px solid var(--accent)',
+                    animationDelay: `${(sectionIdx * 3 + i) * 0.04}s`,
+                    animationFillMode: 'backwards',
                   }}
                 >
                   <span style={{ fontSize: '2.2rem' }}>{set.emoji}</span>

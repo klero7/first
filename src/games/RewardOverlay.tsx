@@ -1,5 +1,35 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { speak } from '../speech/speech';
+
+const CONFETTI_EMOJI = ['⭐', '🎉', '✨', '🌟'];
+
+function Confetti() {
+  const pieces = useMemo(
+    () =>
+      Array.from({ length: 24 }, (_, i) => ({
+        id: i,
+        left: Math.random() * 100,
+        delay: Math.random() * 0.6,
+        duration: 2 + Math.random() * 1.5,
+        emoji: CONFETTI_EMOJI[i % CONFETTI_EMOJI.length],
+      })),
+    [],
+  );
+
+  return (
+    <>
+      {pieces.map((p) => (
+        <span
+          key={p.id}
+          className="confetti-piece"
+          style={{ left: `${p.left}%`, animationDelay: `${p.delay}s`, animationDuration: `${p.duration}s` }}
+        >
+          {p.emoji}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export function RewardOverlay({
   correctCount,
@@ -28,10 +58,14 @@ export function RewardOverlay({
         justifyContent: 'center',
         gap: '1.5rem',
         zIndex: 100,
+        overflow: 'hidden',
       }}
     >
-      <div style={{ fontSize: '5rem' }}>{'⭐'.repeat(Math.max(1, correctCount))}</div>
-      <h2 style={{ fontSize: '2rem', color: '#fff', margin: 0 }}>
+      <Confetti />
+      <div className="bounce-in" style={{ fontSize: '5rem' }}>
+        {'⭐'.repeat(Math.max(1, correctCount))}
+      </div>
+      <h2 className="bounce-in" style={{ fontSize: '2rem', color: '#fff', margin: 0 }}>
         Правильно: {correctCount} из {totalCount}!
       </h2>
       <div style={{ display: 'flex', gap: '1.5rem' }}>

@@ -31,10 +31,11 @@ export function ChoiceButtons({
               ? 'var(--success)'
               : 'var(--error)'
             : 'var(--surface-solid)';
+        const feedbackClass = isPicked ? (choice.correct ? 'pop-correct' : 'shake-wrong') : '';
         return (
           <button
             key={choice.label}
-            className="big-tap"
+            className={`big-tap ${feedbackClass}`}
             disabled={picked !== null}
             onClick={() => handlePick(choice)}
             style={{

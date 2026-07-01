@@ -34,6 +34,8 @@ export interface Question {
   count?: number;
   /** First number shown in a short sequence for `number-line` ("what comes next"). */
   sequenceStart?: number;
+  /** Step between numbers in a `number-line` sequence, e.g. 2 for skip-counting by twos. Defaults to 1. */
+  sequenceStep?: number;
 }
 
 export interface ExerciseSet {

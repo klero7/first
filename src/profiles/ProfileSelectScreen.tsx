@@ -11,13 +11,15 @@ export function ProfileSelectScreen({ onSelect }: { onSelect: (child: ChildId) =
   };
 
   return (
-    <div className="app-shell" style={{ alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
-      <h1 style={{ fontSize: '2rem', margin: 0 }}>Кто сегодня играет?</h1>
+    <div className="app-shell" data-theme="space" style={{ alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
+      <h1 className="bounce-in" style={{ fontSize: '2.2rem', margin: 0 }}>
+        Кто сегодня играет?
+      </h1>
       <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {PROFILE_LIST.map((profile) => (
+        {PROFILE_LIST.map((profile, i) => (
           <button
             key={profile.id}
-            className="big-tap"
+            className="big-tap card bounce-in"
             onClick={() => handlePick(profile.id)}
             style={{
               width: '13rem',
@@ -27,12 +29,14 @@ export function ProfileSelectScreen({ onSelect }: { onSelect: (child: ChildId) =
               alignItems: 'center',
               justifyContent: 'center',
               gap: '0.5rem',
-              background: 'var(--surface-solid)',
-              color: 'var(--text)',
               border: '3px solid var(--accent)',
+              animationDelay: `${i * 0.1}s`,
+              animationFillMode: 'backwards',
             }}
           >
-            <span style={{ fontSize: '4rem' }}>{profile.avatarEmoji}</span>
+            <span className="float-avatar" style={{ fontSize: '4rem', animationDelay: `${i * 0.4}s` }}>
+              {profile.avatarEmoji}
+            </span>
             <span style={{ fontSize: '1.6rem' }}>{profile.name}</span>
             <span style={{ fontSize: '0.9rem', opacity: 0.8, fontWeight: 400 }}>{profile.tagline}</span>
           </button>

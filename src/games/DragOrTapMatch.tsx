@@ -59,7 +59,7 @@ export function DragOrTapMatch({ question, onAnswer }: GameComponentProps) {
           {pairs.map((p) => (
             <button
               key={p.left}
-              className="big-tap"
+              className={`big-tap ${matched.has(p.left) ? 'pop-correct' : ''}`}
               disabled={matched.has(p.left)}
               onClick={() => handleLeftTap(p.left)}
               style={{
@@ -83,7 +83,7 @@ export function DragOrTapMatch({ question, onAnswer }: GameComponentProps) {
             return (
               <button
                 key={right}
-                className="big-tap"
+                className={`big-tap ${isMatched ? 'pop-correct' : wrongFlash === right ? 'shake-wrong' : ''}`}
                 disabled={isMatched}
                 onClick={() => handleRightTap(right)}
                 style={{

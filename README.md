@@ -63,7 +63,7 @@ questions:
 
 - `id` — уникальный идентификатор набора заданий.
 - `child` — `timur` или `samira`.
-- `category` — для группировки на главном экране (`counting`, `math`, `letters`, `reading`, `numbers`, `matching`).
+- `category` — для группировки на главном экране (`counting`, `math`, `letters`, `reading`, `numbers`, `matching`, `facts`, `shapes`, `colors`, `seasons`). Новую категорию можно завести просто указав новое значение — она появится на главном экране автоматически (подпись для неё стоит добавить в `CATEGORY_LABELS` в `src/screens/HomeScreen.tsx`, иначе покажется как есть).
 - `theme` — `space` (космос, для Тимура) или `cosmetics` (косметика/доктор, для Самиры).
 - `difficulty` — 1-3, влияет на порядок сортировки на главном экране.
 - `roundSize` — сколько вопросов показывается за один раз (для Самиры держим 5 — короткие раунды).
@@ -76,7 +76,7 @@ questions:
 | `multiple-choice` | Текст/картинка-эмодзи + варианты ответа | `choices` |
 | `count-visual` | Сложение/вычитание с картинками (повторяется эмодзи) | `visualAsset`, `addends` (например `[5, -2]` — это 5 минус 2), `choices` |
 | `tap-count` | Считаем предметы, нажимая на каждый | `visualAsset`, `count`, `choices` |
-| `number-line` | «Какое число дальше?» | `sequenceStart`, `choices` |
+| `number-line` | «Какое число дальше?» | `sequenceStart`, `choices` (опционально `sequenceStep` — шаг счёта, например `2` для счёта двойками, `10` — десятками; по умолчанию `1`) |
 | `letter-card` | Большая буква/цифра + похожие варианты | `visualAsset` (сама буква/цифра), `choices` |
 | `match-pairs` | Соедини пары (нажатием) | `pairs: [{left, right}]` |
 
