@@ -2,8 +2,8 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
-// Must match the GitHub Pages project site path: https://klero7.github.io/first/
-const base = '/first/';
+// Served from the custom domain root: https://deti.sungatullin.space/
+const base = '/';
 
 export default defineConfig({
   base,
