@@ -1,4 +1,5 @@
 import { PROFILE_LIST } from './profiles.config';
+import { ProfileAvatar } from './ProfileAvatar';
 import type { ChildId } from '../content/types';
 import { initSpeech } from '../speech/speech';
 
@@ -34,9 +35,7 @@ export function ProfileSelectScreen({ onSelect }: { onSelect: (child: ChildId) =
               animationFillMode: 'backwards',
             }}
           >
-            <span className="float-avatar" style={{ fontSize: '4rem', animationDelay: `${i * 0.4}s` }}>
-              {profile.avatarEmoji}
-            </span>
+            <ProfileAvatar profile={profile} size="4.5rem" />
             <span style={{ fontSize: '1.6rem' }}>{profile.name}</span>
             <span style={{ fontSize: '0.9rem', opacity: 0.8, fontWeight: 400 }}>{profile.tagline}</span>
           </button>

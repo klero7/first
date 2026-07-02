@@ -18,6 +18,8 @@ const ASSET_EMOJI: Record<string, string> = {
   stethoscope: '🩺',
   pill: '💊',
   heart: '💖',
+  note_monster: '👾',
+  music_note: '🎵',
 };
 
 export function assetEmoji(key: string | undefined): string {

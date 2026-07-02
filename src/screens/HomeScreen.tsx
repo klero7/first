@@ -1,5 +1,6 @@
 import type { ExerciseSet } from '../content/types';
 import type { ProfileConfig } from '../profiles/profiles.config';
+import { ProfileAvatar } from '../profiles/ProfileAvatar';
 import type { ChildProgress } from '../progress/progressStore';
 import { useSpeech } from '../speech/useSpeech';
 
@@ -14,6 +15,8 @@ const CATEGORY_LABELS: Record<string, string> = {
   shapes: 'Формы',
   colors: 'Цвета',
   seasons: 'Времена года',
+  figures: 'Загадочные фигуры',
+  cartoons: 'Мультики',
 };
 
 export function HomeScreen({
@@ -40,9 +43,7 @@ export function HomeScreen({
     <div className="app-shell" style={{ overflowY: 'auto', padding: '1rem 1.5rem 2rem' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <span className="float-avatar" style={{ fontSize: '2.5rem' }}>
-            {profile.avatarEmoji}
-          </span>
+          <ProfileAvatar profile={profile} size="2.75rem" />
           <div>
             <div style={{ fontSize: '1.4rem', fontWeight: 700, fontFamily: 'var(--font-heading)' }}>{profile.name}</div>
             <div style={{ fontSize: '0.9rem', opacity: 0.8 }}>
